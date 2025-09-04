@@ -1,0 +1,209 @@
+
+// Example Avro record for a NetFlowObject
+{
+  "datum": {
+    "com.bbn.tc.schema.avro.cdm18.NetFlowObject": {
+      "uuid": "11111111-1111-1111-1111-111111111111",
+      "localAddress": "192.168.0.10",
+      "localPort": 22,
+      "remoteAddress": "203.0.113.45",
+      "remotePort": 54422
+    }
+  }
+}
+
+
+// Example Avro record for a Subject
+{
+  "datum": {
+    "com.bbn.tc.schema.avro.cdm18.Subject": {
+      "uuid": "22222222-2222-2222-2222-222222222222",
+      "exec": "/usr/bin/bash"
+    }
+  }
+}
+
+
+// Example Avro record for a FileObject
+{
+  "datum": {
+    "com.bbn.tc.schema.avro.cdm18.FileObject": {
+      "uuid": "33333333-3333-3333-3333-333333333333",
+      "predicateObjectPath": "/etc/passwd"
+    }
+  }
+}
+
+
+
+// Example Avro record for an Event
+{
+  "datum": {
+    "com.bbn.tc.schema.avro.cdm18.Event": {
+      "uuid": "44444444-4444-4444-4444-444444444444",
+      "type": "EVENT_READ",
+      "timestampNanos": 1754356382000000000,
+      "subject": "22222222-2222-2222-2222-222222222222",
+      "predicateObject": "33333333-3333-3333-3333-333333333333"
+    }
+  }
+}
+
+
+
+
+
+    enum EventType {
+
+        /* Object -> Subject */
+        EVENT_ACCEPT,                 // accept a connection on an object
+
+        /* Object1 -> Object2 */
+        EVENT_ADD_OBJECT_ATTRIBUTE,   // add attribute to an object that was incomplete at time of publish
+
+        /* Subject -> Object*/
+        EVENT_BIND,                   // bind to a network endpoint object
+
+        EVENT_BLIND,                  // blind event for a black boxes that are not instrumented
+
+        /* non-directional */
+        EVENT_BOOT,                   // indicates the sytem has booted
+
+        /* Subject -> Object */
+        EVENT_CHANGE_PRINCIPAL,       // change the principal associated with the process
+
+        /* Object -> Subject */
+        EVENT_CHECK_FILE_ATTRIBUTES,  // check the file attributes such as permissions
+
+        /* Subject -> Object */
+        EVENT_CLONE,                  // clone a subject
+
+        /* Subject -> Object */
+        EVENT_CLOSE,                  // close an object
+
+        /* Subject -> Object */
+        EVENT_CONNECT,                // connect to an object
+
+        /* Subject -> Object */
+        EVENT_CREATE_OBJECT,          // create an object
+
+        /* Subject -> Object */
+        EVENT_CREATE_THREAD,          // create a thread subject
+
+        /* non-directional */
+        EVENT_DUP,                    // duplicate a file descriptor
+
+        /* Subject -> Object */
+        EVENT_EXECUTE,                // execute an object
+
+        /* non-directional */
+        EVENT_EXIT,                   // process exit
+
+        /* Object1 -> Object2 */
+        EVENT_FLOWS_TO,               // links 2 objects with a flow direction; info flows from one object to another
+
+        /* Subject <-> Object (bi-directional) */
+        EVENT_FCNTL,                  // manipulate file descriptor
+
+        /* Subject -> Object */
+        EVENT_FORK,                   // fork a process subject
+
+        /* Object1 -> Object2 */
+        EVENT_LINK,                   // link an object to a new name
+
+        /* Object -> Subject */
+        EVENT_LOADLIBRARY,            // dynamically loading a library
+
+        /* Subject -> Object (?? needs confirmation) */
+        EVENT_LOGCLEAR,               // indicates a system log has been cleared
+
+        /* Subject -> Object (?? needs confirmation) */
+        EVENT_LOGIN,                  // a subject has logged in
+
+        /* Subject -> Object (?? needs confirmation) */
+        EVENT_LOGOUT,                 // a subject has logged out
+
+        /* Subject -> Object */
+        EVENT_LSEEK,                  // reposition read/write file offset
+
+        /* Subject <-> Object (bi-directional) */
+        EVENT_MMAP,                   // memory map an object
+
+        /* Subject -> Object */
+        EVENT_MODIFY_FILE_ATTRIBUTES, // modify the attributes of a file object
+
+        /* Subject -> Object */
+        EVENT_MODIFY_PROCESS,         // for events that modify the process environment (eg, umask, chdir)
+
+        /* Subject -> Object */
+        EVENT_MOUNT,                  // indicates the mounting of a device
+
+        /* Subject -> Object */
+        EVENT_MPROTECT,               // change permissions of a memory object
+
+        /* Subject -> Object */
+        EVENT_OPEN,                   // open an object
+
+        /* Subject <-> Object (bi-directional only because it's a catch-all) */
+        EVENT_OTHER,                  // some other event not enumerated in CDM
+
+        /* Object -> Subject */
+        EVENT_READ,                   // read from an object (file or socket)
+
+        /* Object -> Subject */
+        EVENT_READ_SOCKET_PARAMS,     // read parameters of a socket
+
+        /* Object -> Subject */
+        EVENT_RECVFROM,               // receive message from a socket
+
+        /* Object -> Subject */
+        EVENT_RECVMSG,                // receive message from a socket
+
+        /* Object1 -> Object2 */
+        EVENT_RENAME,                 // rename an object
+
+        /* Subject -> Object */
+        EVENT_SENDTO,                 // send through socket
+
+        /* Subject -> Object */
+        EVENT_SENDMSG,                // send message through socket
+
+        /* Subject -> Object */
+        EVENT_SERVICEINSTALL,         // install new services (Windows)
+
+        /* Object1 -> Object2 */
+        EVENT_SHM,                    // share memory between processes
+
+        /* Subject -> Object */
+        EVENT_SIGNAL,                 // signal another subject
+
+        /* Subject -> Object */
+        EVENT_STARTSERVICE,           // indicates a service has started
+
+        /* Subject -> Object */
+        EVENT_TRUNCATE,               // truncate an object
+
+        /* Subject -> Object */
+        EVENT_UMOUNT,                 // indicates the unmounting of a device
+
+        /* Subject -> Object */
+        EVENT_UNIT,                   // create a BEEP unit
+
+        /* Subject -> Object */
+        EVENT_UNLINK,                 // unlink a name from an object
+
+        /* Object1 -> Object2 */
+        EVENT_UPDATE,                 // update an object
+
+        /* Object -> Subject */
+        EVENT_WAIT,                   // wait on another subject
+
+        /* Subject -> Object */
+        EVENT_WRITE,                  // write to an object (file or socket)
+
+        /* Subject -> Object */
+        EVENT_WRITE_SOCKET_PARAMS     // write parameters of a socket
+    }
+
+
+
